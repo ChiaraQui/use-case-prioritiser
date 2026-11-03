@@ -33,11 +33,15 @@ By 2029, every artist, writer and fan who deals with Northlight gets it right fi
 - Issue statements within 30 days of the end of each period, down from 60 days.
 - Reduce unmatched publishing income, money we collect but cannot yet assign to a song or writer, by 25% by 2028.
 
+What this covers: royalty statements, royalty rates and splits in artist and writer contracts, matching income to the right song and writer, and answering artists' and writers' questions about their money. Teams: royalties and rights, publishing admin, artist services.
+
 ### Aim 2. Get every release right everywhere
 
 - Keep metadata errors at delivery below 1% of releases by the end of 2027.
 - Deliver every new release to all streaming services at least four weeks before release day.
 - Complete songwriter and performer credits for 95% of the catalogue by 2029.
+
+What this covers: release metadata, meaning titles, codes, release dates, artwork and credits for songwriters, performers and producers, and collecting complete credits from artists and producers before each release is delivered to streaming services. Teams: digital distribution and metadata, publishing admin, artist services.
 
 ### Aim 3. Grow income from our catalogue
 
@@ -45,17 +49,23 @@ By 2029, every artist, writer and fan who deals with Northlight gets it right fi
 - Answer sync licence requests within two working days, down from five.
 - Grow streams of releases older than five years by 10% a year.
 
+What this covers: sync licensing (placing our songs and recordings in film, TV, adverts and games), handling requests from and pitching to music supervisors, and bringing older releases back to listeners. Teams: sync licensing, digital distribution and metadata.
+
 ### Aim 4. Serve fans and partners well
 
 - Answer 90% of customer and retailer queries within one working day.
 - Process shop refunds and returns within five working days.
 - Cut damaged stock returned by retailers by 20% by 2028.
 
+What this covers: customer and retailer queries, shop orders, refunds, returns and damaged stock, meaning the service fans and retailers get from us. Teams: customer services, physical supply chain.
+
 ### Aim 5. Work well with AI, safely
 
 - Every operations team has a trained AI champion by mid 2027.
 - No AI output reaches an artist, writer, fan or partner without a person checking it.
 - Raise the share of staff who say their workload is manageable by 10 points in the annual survey by 2028.
+
+What this covers: AI training and AI champions, safe use of AI with a person checking every output, and staff workload and wellbeing. Teams: all.
 
 ## How we will work
 
