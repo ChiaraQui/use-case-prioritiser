@@ -99,6 +99,13 @@ def pinecone_health() -> dict:
 #   ====================
 SECTION_HEADING = re.compile(r"^=+[ \t]*\n([^\n=][^\n]*)\n=+[ \t]*$", re.MULTILINE)
 
+# Markdown headings (#, ## or ###), as in the Northlight corpus. Splitting at
+# ### keeps each strategy aim in its own chunk with its numbered targets.
+MARKDOWN_HEADING = re.compile(r"^#{1,3}[ \t]+(.+?)[ \t]*$", re.MULTILINE)
+
+# "---" ... "---" metadata block at the top of a Markdown file.
+FRONT_MATTER = re.compile(r"\A---\n.*?\n---\n", re.DOTALL)
+
 
 def split_sections(text: str) -> list[tuple[str | None, str]]:
     """
@@ -107,7 +114,9 @@ def split_sections(text: str) -> list[tuple[str | None, str]]:
     no headings comes back whole.
     """
 
-    headings = list(SECTION_HEADING.finditer(text))
+    headings = list(SECTION_HEADING.finditer(text)) or list(
+        MARKDOWN_HEADING.finditer(text)
+    )
     if not headings:
         return [(None, text)]
 
@@ -138,15 +147,25 @@ def chunk_text(text: str) -> list[str]:
         chunk_size=int(os.getenv("CHUNK_SIZE", DEFAULT_CHUNK_SIZE)),
         chunk_overlap=int(os.getenv("CHUNK_OVERLAP", DEFAULT_CHUNK_OVERLAP)),
     )
+    text = FRONT_MATTER.sub("", text)
     sections = split_sections(text)
     if len(sections) == 1 and sections[0][0] is None:
         return splitter.split_text(text)
 
-    # The document's first line is its title, e.g. "Northwind Robotics Employee Handbook".
-    doc_title = text.strip().splitlines()[0].strip()
+    # The title is the "# " heading if there is one, else the first line,
+    # e.g. "Northlight Records: strategy 2027 to 2029".
+    title_heading = re.search(r"^#[ \t]+(.+?)[ \t]*$", text, re.MULTILINE)
+    doc_title = (
+        title_heading.group(1)
+        if title_heading
+        else text.strip().splitlines()[0].strip()
+    )
     chunks: list[str] = []
     for title, body in sections:
-        prefix = f"{doc_title} — {title}\n\n" if title else ""
+        if title == doc_title:
+            prefix = f"{doc_title}\n\n"
+        else:
+            prefix = f"{doc_title} — {title}\n\n" if title else ""
         chunks.extend(prefix + piece for piece in splitter.split_text(body))
     return chunks
 
