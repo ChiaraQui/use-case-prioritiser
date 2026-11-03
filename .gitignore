@@ -1,0 +1,18 @@
+# Environment — never commit real keys
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Course-provided sample corpus, not redistributed
+docs/northwind/
+
+# Private working notes for Claude, kept off the public repo
+CLAUDE.md
